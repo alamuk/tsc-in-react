@@ -7,6 +7,8 @@
 3. npm run dev
 4. delete - app.css 
 5. src - modify - app.tsx | index.css 
+6. new FormData = class probided by browser.
+7. 
 
 ```
 # Outsourcing
@@ -70,7 +72,23 @@ const CourseGoal: FC<CourseGoalProps> = ({ title, children }) => { // alternativ
 
 export default CourseGoal;
 ```
+### For Event type in react :
+1. form = type FormEvent  // this use only for development purpose. // we dont need it for real production purpose.
+2. it needs to be always to be set `event: FormEvent`
+3. HTMLFormElement for event.currentTarget
 
+```ts
+import { type FormEvent } from 'react';
+
+function handleSubmit(event: FormEvent) {
+  event.preventDefault()
+}
+
+// but: if we do inline event, we dont need  to write it. 
+<form onSubmit={(event) => event.value}> 
+// FormEvent<> can be a generic type. 
+```
+## for input = we can use HTMLInputElement type with hook. `useRef<HTMLInputElement>`
 
 
 ### For Key Props: 
@@ -174,3 +192,25 @@ return
 })`
 
 
+### useRef() hook
+- extracting input value
+- it gives a ref Object{}
+- its bring special ref={} props for inline elements. 
+- it always gives object with current property `const enterGoal = goal.current.value`
+- ! = means = this will never be null . `const enterGoal = goal.current!.value`
+- useRef<> can add a generic type 
+
+
+# where we use it
+-  variable 
+- object 
+- Array 
+- union type 
+- generic type 
+- htmlInput
+- HTMLForm 
+- events
+- useHook 
+- useState
+- useRef
+- call back function 

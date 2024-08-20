@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from './Header.tsx';
 import goalsImg from './assets/goals.jpg';
 import CourseGoalList from './components/CourseGoalList.tsx';
+import NewGoal from './components/NewGoal.tsx';
 
 //
 export type CourseGoalType = {
@@ -19,14 +20,13 @@ export default function App() {
     setGoals((prevGoal) => prevGoal.filter((goal) => goal.id !== id));
   }
 
-  const newGoals: CourseGoalType = {
-    id: Math.random(),
-    title: 'Learn react + ts',
-    description: 'learn in depth',
-  };
-
-  function handleGoal() {
+  function handleGoal(goal: string, summary: string) {
     setGoals((preGoals) => {
+      const newGoals: CourseGoalType = {
+        id: Math.random(),
+        title: goal,
+        description: summary,
+      };
       return [...preGoals, newGoals];
     });
   }
@@ -36,7 +36,7 @@ export default function App() {
       <Header image={{ src: goalsImg, alt: 'A list of goals' }}>
         <h1> Your Course Goals</h1>
       </Header>
-      <button onClick={handleGoal}>Add Goal</button>
+      <NewGoal onAddGoal={handleGoal} />
       <CourseGoalList goals={goals} onDeleteGoal={handleDelete} />
     </main>
   );
