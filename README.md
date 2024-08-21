@@ -1,5 +1,14 @@
 # TypeScript in React
 [link of this project](https://github.com/academind/react-typescript-course-resources/tree/main/code/03%20React%20TypeScript%20Essentials/01%20Starting%20Project)
+
+# Goal : 
+- components, Props & Typescript
+- Handling Events 
+- Working with State
+- Handling Input via Forms & Refs 
+
+
+
 ### command line 
 ``` 
 1. npm create vite@latest tsc-in-react
@@ -41,13 +50,13 @@ type CourseGoalProps = PropsWithChildren<{ title: string }>;
 # React Type = for jsx type =
 ### For Children Props: 
 1. type ReactNode
-2. type PropsWithChildren<generic> // generic type. // connect with prop type 
+2. type PropsWithChildren<generic> // generic type. // connect with a prop type 
 3. type FC = means functional component type. it is also a generic type. use with => arrow function. // connect with prop type
 
 * for children = ReactNode type.
-* we need to:  import { type ReactNode } from 'react';
+* we need to: import { type ReactNode } from 'react';
 * use case: children: ReactNode;
-  alternative way :  type courseGoalProps = PropsWithChildren<{title: string}>
+  alternative way: type courseGoalProps = PropsWithChildren<{title: string}>
 * here we can use PropsWithChildren type by importing it from react.
 * also it is a generic type where we can specify its type we are using <{title: string}>
 * means = it is a object type and inside it we have title which is string type.
