@@ -6,6 +6,12 @@
 - Handling Events 
 - Working with State
 - Handling Input via Forms & Refs 
+-------------------
+- Rendering Different Content Based on Props
+- Building Wrapper Components 
+- Building Polymorphic Components 
+- Forwarding Refs & Exposing Components APIs
+-------------------------------
 
 
 
@@ -70,7 +76,7 @@ type CourseGoalProps = PropsWithChildren<{ title: string }>;
 const CourseGoal: FC<CourseGoalProps> = ({ title, children }) => { // alternative way to assaing a type 
   return (
     <article>
-      <div>
+      <div> 
         <h2>{title}</h2>
         {children}
       </div>
@@ -208,6 +214,45 @@ return
 - it always gives object with current property `const enterGoal = goal.current.value`
 - ! = means = this will never be null . `const enterGoal = goal.current!.value`
 - useRef<> can add a generic type 
+### ternary expression 
+`<aside>{mode === 'warning' ? <h2>{warning}</h2> : null}</aside>; // ternary expression `
+
+### undefined 
+undefined variable we can use ReactNode type ` let warningBox: ReactNode;` 
+
+### union and literal type
+`severity: 'low' | 'medium' | 'high' // from index.css `
+
+### make a type optional: 
+- making optional by using '?' with variable name or using value as undefined
+`severity: 'low' | 'medium' | 'high' | undefined`'
+`severity?: 'low' | 'medium' | 'high' ` // '?' used — means undefined 
+
+### discriminated Union
+```ts 
+type HintBoxProps = {
+  mode: 'hint';
+  children: ReactNode;
+};
+
+type WarningBoxProps = {
+  mode: 'warning';
+  severity: 'high' | 'medium' | 'low';
+  children: ReactNode;
+};
+
+type InfoBoxProps = HintBoxProps | WarningBoxProps;
+
+```
+### removing the error = cont + alt + enter
+
+### props object
+- part of the object props always has 'children' property.
+  `const { children } = props; /// destructuring children prop from props object.`
+
+
+
+
 
 
 # where we use it
@@ -223,3 +268,4 @@ return
 - useState
 - useRef
 - call back function 
+
